@@ -58,3 +58,47 @@ I also added a `/menu` route that renders `menu.ejs` and sends the menu data fro
 In `menu.ejs`, I used a loop (`forEach`) to display each menu item (name, price, rating, category, details) without manually repeating HTML.
 
 
+## Chunk 2: Category Menu Pages (Dynamic Route)
+
+I added category links in the nav that point to routes like `/menu/mains` and `/menu/desserts`.
+
+In `server.js`, I created one dynamic route: `/menu/:category`.  
+This route reads the category from the URL using `req.params.category`, filters the menu items, and renders `category.ejs` with only matching items.
+
+This avoids writing separate routes for each category.
+
+## Understanding EJS Tags
+
+EJS lets us mix JavaScript inside HTML using special tags.
+
+## What `<%= %>` Means in EJS
+
+In EJS, `<%= %>` is used to display (output) a value inside HTML.
+
+It tells EJS:
+“Take this JavaScript value and print it on the page.”
+
+Example:
+
+`<%= restaurant.name %>`
+
+If the server sends:
+
+`{ restaurant: { name: "The Green Byte Bistro" } }`
+
+The browser will show:
+
+The Green Byte Bistro
+
+### Simple Explanation
+- `<% %>` → Run JavaScript code
+- `<%= %>` → Run JavaScript AND show the result on the page
+
+Think of it like:
+- `<% %>` = thinking
+- `<%= %>` = thinking + speaking
+
+### Difference Between EJS Tags
+- `<% %>` → Runs JavaScript but does NOT display anything.
+- `<%= %>` → Runs JavaScript and displays the result.
+- `<%- %>` → Displays unescaped HTML (used for includes like nav).

@@ -2,11 +2,19 @@
   This is a NAV PARTIAL (reusable template piece).
   We will include it on multiple pages so we don't repeat nav HTML.
 -->
+<!-- Reusable nav bar (partial) -->
 <nav>
-    <!-- These links go to routes in Express -->
+    <!-- Basic pages -->
     <a href="/">Home</a>
     |
     <a href="/menu">Full Menu</a>
+    |
+    <!-- Category pages (dynamic route) -->
+    <a href="/menu/mains">Mains</a>
+    |
+    <a href="/menu/desserts">Desserts</a>
+    |
+    <a href="/menu/sides">Sides</a>
 </nav>
 
 <hr />

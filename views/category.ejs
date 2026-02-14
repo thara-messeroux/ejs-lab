@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Show the category in the browser tab -->
+    <title>
+        <%= category %> Menu
+    </title>
+</head>
+
+<body>
+    <!-- Reuse the same nav -->
+    <%- include("partials/nav") %>
+
+        <h1>
+            <%= category %> Menu
+        </h1>
+
+        <!-- If no items match, show a friendly message -->
+        <% if (items.length===0) { %>
+            <p>No items found for this category.</p>
+            <% } else { %>
+                <ul>
+                    <% items.forEach((item)=> { %>
+                        <li>
+                            <h2>
+                                <%= item.name %>
+                            </h2>
+                            <p><strong>Price:</strong> $<%= item.price %>
+                            </p>
+                            <p><strong>Rating:</strong>
+                                <%= item.rating %>
+                            </p>
+                            <p>
+                                <%= item.details %>
+                            </p>
+                        </li>
+                        <hr />
+                        <% }) %>
+                </ul>
+                <% } %>
+</body>
+
+</html>

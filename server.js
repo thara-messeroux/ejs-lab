@@ -81,6 +81,18 @@ app.get("/menu", (req, res) => {
     res.render("menu", { menu: RESTAURANT.menu });
 });
 
+app.get("/menu/:category", (req, res) => {
+    // Grab the category from the URL (ex: "mains")
+    const category = req.params.category;
+
+    // Filter menu items so we only keep ones that match this category
+    const filteredItems = RESTAURANT.menu.filter((item) => item.category === category);
+
+    // Render category.ejs and send:
+    // 1) the category name
+    // 2) the filtered list of menu items
+    res.render("category", { category, items: filteredItems });
+});
 
 // Start the server
 app.listen(PORT, () => {
