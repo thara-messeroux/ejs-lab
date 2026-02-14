@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title uses real data from the server -->
+    <title>
+        <%= restaurant.name %>
+    </title>
+</head>
+
+<body>
+    <h1>Home Page</h1>
+
+    <!-- Restaurant details coming from Express -->
+    <h2>
+        <%= restaurant.name %>
+    </h2>
+
+    <p><strong>Address:</strong>
+        <%= restaurant.address %>
+    </p>
+    <p><strong>Phone:</strong>
+        <%= restaurant.phone %>
+    </p>
+
+    <!-- Conditional rendering (open vs closed) -->
+    <p>
+        <strong>Status:</strong>
+        <%= restaurant.isOpen ? "Yes we are open!" : "Sorry, we are closed." %>
+    </p>
+</body>
+
+</html>
