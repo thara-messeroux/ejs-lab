@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Show the category in the browser tab -->
+    <!-- Browser tab title uses the category -->
     <title>
         <%= category %> Menu
     </title>
@@ -22,17 +22,20 @@
         <!-- If no items match, show a friendly message -->
         <% if (items.length===0) { %>
             <p>No items found for this category.</p>
+            <p>Try: mains, desserts, or sides.</p>
             <% } else { %>
                 <ul>
                     <% items.forEach((item)=> { %>
                         <li>
                             <h2>
                                 <%= item.name %>
-                                    <!-- If rating is 5, show a star -->
+
+                                    <!-- If rating is exactly 5, show a star -->
                                     <% if (item.rating===5) { %>
                                         ⭐
                                         <% } %>
                             </h2>
+
                             <p><strong>Price:</strong> $<%= item.price %>
                             </p>
                             <p><strong>Rating:</strong>

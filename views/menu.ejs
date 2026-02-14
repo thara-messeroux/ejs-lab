@@ -8,23 +8,23 @@
 </head>
 
 <body>
-    <!-- Reuse the same nav on this page -->
+    <!-- Reuse the nav on this page -->
     <%- include("partials/nav") %>
 
         <h1>Full Menu</h1>
 
         <!--
-      We received an array called "menu" from server.js:
+      "menu" is an array sent from server.js like this:
       res.render("menu", { menu: RESTAURANT.menu })
     -->
-
         <ul>
             <% menu.forEach((item)=> { %>
-                <!-- Each "item" is one menu object (name, price, etc.) -->
                 <li>
+                    <!-- Show the item name -->
                     <h2>
                         <%= item.name %>
-                            <!-- If rating is 5, show a star -->
+
+                            <!-- If rating is exactly 5, show a star -->
                             <% if (item.rating===5) { %>
                                 ⭐
                                 <% } %>
@@ -40,12 +40,11 @@
                         <%= item.category %>
                     </p>
 
-                    <!-- Details/description -->
+                    <!-- Show details/description -->
                     <p>
                         <%= item.details %>
                     </p>
                 </li>
-
                 <hr />
                 <% }) %>
         </ul>

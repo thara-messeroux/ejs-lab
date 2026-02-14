@@ -5,34 +5,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Title uses real data from the server -->
+    <!-- Browser tab title (data comes from Express) -->
     <title>
         <%= restaurant.name %>
     </title>
 </head>
 
 <body>
+    <!-- Reuse the nav partial -->
     <%- include("partials/nav") %>
 
-    <h1>Home Page</h1>
+        <h1>Home Page</h1>
 
-    <!-- Restaurant details coming from Express -->
-    <h2>
-        <%= restaurant.name %>
-    </h2>
+        <!-- Restaurant details (coming from the "restaurant" object) -->
+        <h2>
+            <%= restaurant.name %>
+        </h2>
 
-    <p><strong>Address:</strong>
-        <%= restaurant.address %>
-    </p>
-    <p><strong>Phone:</strong>
-        <%= restaurant.phone %>
-    </p>
+        <p><strong>Address:</strong>
+            <%= restaurant.address %>
+        </p>
+        <p><strong>Phone:</strong>
+            <%= restaurant.phone %>
+        </p>
 
-    <!-- Conditional rendering (open vs closed) -->
-    <p>
-        <strong>Status:</strong>
-        <%= restaurant.isOpen ? "Yes we are open!" : "Sorry, we are closed." %>
-    </p>
+        <!-- Conditional rendering: show different text based on isOpen -->
+        <p>
+            <strong>Status:</strong>
+            <%= restaurant.isOpen ? "Yes we are open!" : "Sorry, we are closed." %>
+        </p>
 </body>
 
 </html>

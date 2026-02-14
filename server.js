@@ -1,18 +1,18 @@
-// Import express so we can use it
+// Import Express so we can build a web server
 const express = require("express");
 
-// Create the Express app
+// Create the Express app (this is our server)
 const app = express();
 
-// Tell Express to use EJS as the template engine
+// Tell Express: "We are using EJS to render our HTML pages"
 app.set("view engine", "ejs");
 
-// Define the port number
+// Pick a port (a "door number" on our computer)
 const PORT = 3000;
 
-// -------------------------------
-// Lab Data (restaurant info)
-// -------------------------------
+// ------------------------------------
+// Lab Data (our "database" for the lab)
+// ------------------------------------
 const RESTAURANT = {
     name: "The Green Byte Bistro",
     isOpen: true,
@@ -67,32 +67,48 @@ const RESTAURANT = {
     ],
 };
 
+// ------------------------------------
+// Helper function (keeps routes clean)
+// ------------------------------------
+// Returns ONLY the menu items that match a category (ex: "mains")
+const getItemsByCategory = (category) => {
+    return RESTAURANT.menu.filter((item) => item.category === category);
+};
+
 // -------------------------------
-// Routes
+// Routes (URLs users can visit)
 // -------------------------------
+
+// Home page
 app.get("/", (req, res) => {
-    // Send the RESTAURANT object into the EJS page as "restaurant"
+    // Render home.ejs and send the full restaurant object into the page
     res.render("home", { restaurant: RESTAURANT });
 });
 
+// Full menu page
 app.get("/menu", (req, res) => {
-    // Render menu.ejs and send the full menu array
-    // "menu" is the variable name the EJS file will use
+    // Render menu.ejs and send just the menu array into the page
     res.render("menu", { menu: RESTAURANT.menu });
 });
 
+// Category page (dynamic route)
+// Examples: /menu/mains, /menu/desserts, /menu/sides
 app.get("/menu/:category", (req, res) => {
-    // Grab the category from the URL (ex: "mains")
+    // Grab the category from the URL
     const category = req.params.category;
 
-    // Filter menu items so we only keep ones that match this category
-    const filteredItems = RESTAURANT.menu.filter((item) => item.category === category);
+    // Get only the items that match that category
+    const items = getItemsByCategory(category);
 
-    // Render category.ejs and send:
-    // 1) the category name
-    // 2) the filtered list of menu items
-    res.render("category", { category, items: filteredItems });
+    // Render category.ejs with the category name and the filtered list
+    res.render("category", { category, items });
 });
+
+// Optional: friendly 404 handler (works reliably)
+app.use((req, res) => {
+    res.status(404).send("404 - Page Not Found");
+});
+
 
 // Start the server
 app.listen(PORT, () => {
