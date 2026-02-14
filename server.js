@@ -75,6 +75,13 @@ app.get("/", (req, res) => {
     res.render("home", { restaurant: RESTAURANT });
 });
 
+app.get("/menu", (req, res) => {
+    // Render menu.ejs and send the full menu array
+    // "menu" is the variable name the EJS file will use
+    res.render("menu", { menu: RESTAURANT.menu });
+});
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);

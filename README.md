@@ -47,3 +47,14 @@ Now my server can:
 
 This is how real web applications send structured pages to users.
 
+## Chunk 1: Nav Partial + Full Menu Page
+
+I created a reusable navigation partial at `views/partials/nav.ejs` and included it on multiple pages using:
+`<%- include("partials/nav") %>`.
+
+I also added a `/menu` route that renders `menu.ejs` and sends the menu data from the server:
+`res.render("menu", { menu: RESTAURANT.menu })`.
+
+In `menu.ejs`, I used a loop (`forEach`) to display each menu item (name, price, rating, category, details) without manually repeating HTML.
+
+

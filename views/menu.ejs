@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Menu</title>
+</head>
+
+<body>
+    <!-- Reuse the same nav on this page -->
+    <%- include("partials/nav") %>
+
+        <h1>Full Menu</h1>
+
+        <!--
+      We received an array called "menu" from server.js:
+      res.render("menu", { menu: RESTAURANT.menu })
+    -->
+
+        <ul>
+            <% menu.forEach((item)=> { %>
+                <!-- Each "item" is one menu object (name, price, etc.) -->
+                <li>
+                    <h2>
+                        <%= item.name %>
+                    </h2>
+
+                    <!-- Show key info -->
+                    <p><strong>Price:</strong> $<%= item.price %>
+                    </p>
+                    <p><strong>Rating:</strong>
+                        <%= item.rating %>
+                    </p>
+                    <p><strong>Category:</strong>
+                        <%= item.category %>
+                    </p>
+
+                    <!-- Details/description -->
+                    <p>
+                        <%= item.details %>
+                    </p>
+                </li>
+
+                <hr />
+                <% }) %>
+        </ul>
+</body>
+
+</html>
