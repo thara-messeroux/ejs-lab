@@ -28,6 +28,10 @@
                         <li>
                             <h2>
                                 <%= item.name %>
+                                    <!-- If rating is 5, show a star -->
+                                    <% if (item.rating===5) { %>
+                                        ⭐
+                                        <% } %>
                             </h2>
                             <p><strong>Price:</strong> $<%= item.price %>
                             </p>

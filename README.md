@@ -102,3 +102,15 @@ Think of it like:
 - `<% %>` → Runs JavaScript but does NOT display anything.
 - `<%= %>` → Runs JavaScript and displays the result.
 - `<%- %>` → Displays unescaped HTML (used for includes like nav).
+
+## Chunk 3: Level Up (⭐ Rating Badge)
+
+I added conditional rendering in EJS to show a ⭐ when a menu item has a rating of 5.
+
+Example logic:
+
+- If `item.rating === 5` → show ⭐
+- Otherwise → show nothing
+
+This demonstrates using EJS conditionals inside a loop.
+
